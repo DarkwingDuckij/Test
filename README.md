@@ -6,4 +6,4 @@ Exploratorní analýza datasetu 4 700 přestupů (top 250/sezónu, 19 sezón).
 python CistyScript.py --input fotbal_prestupy_2000_2019.csv --output_dir ./output
 
 **Závěry:** viz VystupEDA.pdf  
-**Prezentace:** stáhnout PrezentaceEDA.html a otevřít v prohlížeči
+**Prezentace:** stáhnout PrezentaceEDA.html a otevřít v prohlížeči; PrezentaceEDA.pdf - kdyby nešlo stáhnout
