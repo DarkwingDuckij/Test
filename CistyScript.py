@@ -13,6 +13,11 @@ plt.rcParams["figure.figsize"] = (12, 6)
 
 TOP_5_LIGY = ["Premier League", "LaLiga", "Serie A", "1.Bundesliga", "Ligue 1"]
 
+# Normalizace názvů lig – různé přepisy stejné soutěže v zdrojových datech
+LIGA_NORMALIZACE = {
+    "Série A": "Serie A"
+}
+
 DTYPE_MAPPER = {
     "Jméno":               "string",
     "Pozice":              "string",
@@ -50,6 +55,10 @@ def vycisti_a_transformuj(df: pd.DataFrame) -> pd.DataFrame:
     for col in df.columns:
         if df[col].dtype == "string":
             df[col] = df[col].str.strip()
+
+    # Normalizace názvů lig (různé přepisy → jednotná forma)
+    for liga_col in ["Původní liga", "Nová Liga"]:
+        df[liga_col] = df[liga_col].replace(LIGA_NORMALIZACE)
 
     # Odvozené sloupce
     df["Sezóna začátek"] = df["Sezóna"].str.extract(r"(\d{4})").astype("Int64")
